@@ -1,0 +1,8 @@
+include catppuccin
+
+#set recolor                     "true"
+#set recolor-keephue             "false"
+set window-title-home-tilde true
+
+set selection-clipboard clipboard
+
