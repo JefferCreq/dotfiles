@@ -1,0 +1,4 @@
+.dotfiles
+*__pycache__/
+*.idea
+credentials.json
