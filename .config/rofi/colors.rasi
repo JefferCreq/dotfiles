@@ -1,0 +1,10 @@
+/* Tokyo Night Theme */
+
+* {
+  al:   #00000000;
+  bg:   #11111bFF;
+  bga:  #1e1e2eFF;
+  fga:  #c6d0f5FF;
+  fg:   #c6d0f5FF;
+  ac:   #1e1e2eFF;
+}
