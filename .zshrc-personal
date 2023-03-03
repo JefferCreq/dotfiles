@@ -1,0 +1,57 @@
+# ls
+alias ll='lsd -lh --group-dirs=first'
+alias la='lsd -a --group-dirs=first'
+alias l='lsd --group-dirs=first'
+alias lla='lsd -lha --group-dirs=first'
+alias ls='lsd --group-dirs=first'
+alias cat='bat'
+
+# git
+alias gcl='git clone --depth 1'
+alias gi='git init'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push origin master'
+
+
+alias vi=nvim
+alias calias='nvim /home/jeffer/.bash_aliases'
+alias ci3='nvim /home/jeffer/.config/i3/config'
+alias cpol='nvim /home/jeffer/.config/polybar/config'
+alias cpolm='nvim /home/jeffer/.config/polybar/configs/modules.ini'
+alias cpic='nvim /home/jeffer/.config/picom/picom.conf'
+alias cnf='nvim /home/jeffer/.config/neofetch/config.conf'
+alias cbsp='nvim /home/jeffer/.config/bspwm/bspwmrc'
+alias csxh='nvim /home/jeffer/.config/sxhkd/sxhkdrc'
+alias cvi='nvim /home/jeffer/.config/nvim/lua/custom/chadrc.lua'
+alias cza='nvim /home/jeffer/.config/zathura/zathurarc'
+alias ccava='nvim /home/jeffer/.config/cava/config'
+alias cmoc='nvim /home/jeffer/.moc/config'
+alias cala='nvim /home/jeffer/.config/alacritty/alacritty.yml'
+alias cqt='nvim /home/jeffer/.config/qtile/config.py'
+alias cqtw='nvim /home/jeffer/.config/qtile/settings/screens.py'
+alias cqtk='nvim /home/jeffer/.config/qtile/settings/keys.py'
+alias r=ranger
+
+
+# cd shortcut
+alias cdqt='cd $HOME/.config/qtile'
+alias cdvi='cd $HOME/.config/nvim/lua/custom/'
+alias cdlp='cd $HOME/EduVault/Courses/LP2/Workspace/'
+
+# For .dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# For .dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Grub update
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+alias ..='cd ..'
+alias nf='clear; neofetch'
+alias mv='mv -i'
+alias rm='rm -I'
+alias grep='grep --color=auto'
+alias wlan0_up='sudo ip link set wlan0 up'
+alias wlan0_down='sudo ip link set wlan0 down'

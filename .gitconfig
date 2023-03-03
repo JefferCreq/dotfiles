@@ -1,0 +1,9 @@
+[user]
+	name = JefferCreq
+	email = jeffcreq@gmail.com
+[alias]
+	lg = log --oneline --decorate --all --graph
+	s = status -sb
+	cm = commit -m
+[credential]
+	helper = store
