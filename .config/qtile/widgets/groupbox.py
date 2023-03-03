@@ -241,13 +241,10 @@ class CustomGroupBox(_GroupBase):
                     for g in self.qtile.groups
                     if g.label and (g.windows or g.screen) and g.name in self.visible_groups
                 ]
-            else:
-                return [g for g in self.qtile.groups if g.label and (g.windows or g.screen)]
-        else:
-            if self.visible_groups:
-                return [g for g in self.qtile.groups if g.label and g.name in self.visible_groups]
-            else:
-                return [g for g in self.qtile.groups if g.label]
+            return [g for g in self.qtile.groups if g.label and (g.windows or g.screen)]
+        if self.visible_groups:
+            return [g for g in self.qtile.groups if g.label and g.name in self.visible_groups]
+        return [g for g in self.qtile.groups if g.label]
 
     def get_clicked_group(self):
         group = None
@@ -337,27 +334,7 @@ class CustomGroupBox(_GroupBase):
 
             if g.screen:
                 border = None
-                # if self.highlight_method == "text":
-                #     border = None
-                #     text_color = self.this_current_screen_border
-                # else:
-                #     if self.block_highlight_text_color:
-                #         text_color = self.block_highlight_text_color
-                #     if self.bar.screen.group.name == g.name:
-                #         if self.qtile.current_screen == self.bar.screen:
-                #             border = self.this_current_screen_border
-                #             to_highlight = True
-                #         else:
-                #             border = self.this_screen_border
-                #     else:
-                #         if self.qtile.current_screen == g.screen:
-                #             border = self.other_current_screen_border
-                #         else:
-                #             border = self.other_screen_border
 
-
-                # if self.block_highlight_text_color:
-                #         text_color = self.block_highlight_text_color
                 if self.bar.screen.group.name == g.name:
                     if self.qtile.current_screen == self.bar.screen:
                         text_color = self.this_current_screen_border
