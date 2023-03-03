@@ -1,0 +1,4 @@
+#!/bin/bash
+cp $1 ~/.config/.wallpaper
+qtile cmd-obj -o cmd -f reload_config
+

@@ -1,0 +1,46 @@
+#! /usr/bin/python
+
+import argparse
+import sys, os
+sys.path.insert(0, os.path.join(os.path.expanduser("~"), ".config/qtile/widgets"))
+from pomodoro import PomoDB
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-m', '--mode')
+parser.add_argument('-d', '--duration', default=25, type=int)
+parser.add_argument('-n', '--newtag')
+parser.add_argument('-r', '--report', action='extend', nargs="+", type=str, required=False)
+parser.add_argument('-t', '--tag', default='Learning')
+parser.add_argument('-u', '--update')
+args = parser.parse_args()
+
+db = PomoDB(filename='resources/data/pomo.db')
+
+if args.mode == 'start':
+    # si hay un pomo iniciado envia mensaje de error
+    state = db.last_session().get('state')
+    if state == 1:
+        print("There is a pomo running right now")
+    else:  # si no inicia pomodoro
+        print(f"Just started a {args.duration} minute pomodoro session")
+        db.new_session(tag=args.tag, minutes=args.duration)
+        
+if args.newtag:
+    db.new_tag(args.newtag)
+
+if args.report:
+    for table in args.report:
+        match table:
+            case 'tags':
+                db.show_tags()
+                db.show_tags_dist()
+        match table:
+            case 'sessions':
+                db.show_sessions()
+                db.show_history()
+    exit(0)
+    
+if args.update:
+    db.update_tag_minutes()
+
+
