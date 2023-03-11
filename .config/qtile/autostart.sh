@@ -10,6 +10,7 @@ fi
 
 # $HOME/.config/qtile/themes/polybar.sh
 light -S 100 &
-redshift -P -O 4000 &
+redshift -P -O 4500 &
 exec mpd &
 feh --bg-fill /home/jeffer/.config/.wallpaper &
+picom --config ~/.config/picom/picom.conf &

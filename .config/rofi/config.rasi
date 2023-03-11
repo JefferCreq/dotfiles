@@ -3,7 +3,7 @@ configuration {
 	width: 30;
 	lines: 10;
 /*	columns: 1;*/
-	font: "JetBrainsMonoMedium Nerd Font Mono 12";
+	font: "CaskaydiaCove Nerd Font SemiBold 12";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/

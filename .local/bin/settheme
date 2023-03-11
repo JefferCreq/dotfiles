@@ -1,0 +1,44 @@
+#!/bin/sh
+
+theme_array=(
+  'catppuccin_mocha'
+  'memento_mori'
+  'gruvbox'
+)
+
+for i in "${!theme_array[@]}"
+do
+  echo "$((i + 1)). ${theme_array[$i]}"
+done
+
+echo Select the new Theme:
+read index_theme
+new_theme=${theme_array[$((index_theme - 1))]}
+
+echo ${new_theme}
+
+files_array=(
+  ${HOME}/.config/qtile/config.py
+  ${HOME}/.config/alacritty/alacritty.yml
+  ${HOME}/.config/rofi/theme.rasi
+  )
+lines_array=(
+  'theme = Theme'
+  '~\/.config\/alacritty\/themes\/'
+  '@import \"themes\/'
+  )
+str_pattern_array=(
+  [\"${new_theme}\"]
+  ${new_theme}.yml
+  ${new_theme}.rasi\"
+  )
+
+for i in "${!files_array[@]}"
+do
+  sed -i "s/${lines_array[$i]}.*/${lines_array[$i]}${str_pattern_array[$i]}/" "${files_array[$i]}"
+done
+
+
+if [ "$DESKTOP_SESSION" == "qtile" ]; then
+  qtile cmd-obj -o cmd -f reload_config
+fi

@@ -1,0 +1,8 @@
+* {
+  al:   #00000000;
+  bg:   #191B1CFF;
+  bga:  #50545BFF;
+  fga:  #ABB2BFFF;
+  fg:   #ABB2BFFF;
+  ac:   #50545BFF;
+}

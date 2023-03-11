@@ -1,4 +1,4 @@
-@import "colors.rasi"
+@import "themes/catppuccin_mocha.rasi"
 
 window {
     transparency:                   "real";
@@ -7,7 +7,7 @@ window {
 	border:							2px 2px 2px 2px;
 	border-color:					@ac;
     border-radius:                  2px;
-	width:							600px;
+	width:							1000px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -18,7 +18,7 @@ prompt {
 	padding: 						2px 0px 0px 4px;
 	background-color: 				@al;
 	text-color: 					@fg;
-	font:							"JetBrainsMonoMedium Nerd Font Mono 12";
+	font:							"CaskaydiaCove Nerd Font SemiBold 12";
 }
 
 entry {

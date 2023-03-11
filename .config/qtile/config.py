@@ -11,7 +11,7 @@ from libqtile.utils import guess_terminal, send_notification
 from libqtile import qtile, hook, layout, widget, bar
 # from qtile_extras import bar, widget
 # from qtile_extras.widget import modify
-from themes import archcraft
+from themes import Theme
 from widgets.spotify import Spotify, SpotifyIcon
 from widgets.pomodoro import Pomodoro, PomoIcon
 from widgets.gmail import Gmail, GmailIcon
@@ -28,17 +28,20 @@ from widgets.upower import UPowerWidget
 home = os.path.expanduser('~')
 MOD = "mod4"
 terminal = guess_terminal()
-theme = archcraft
+theme = Theme["catppuccin_mocha"]
 SCALE_QTILE = 2
+
 DEFAULT_FONT = 'CaskaydiaCove Nerd Font SemiBold'
 ICON_FONT = 'Symbols Nerd Font Mono'
 ICON_AWESOME_FONT = 'Font Awesome 6 Free'
 ICON_FONT_SIZE = 13*SCALE_QTILE
 ITALIC_FONT = 'CaskaydiaCove Nerd Font Mono Bold Italic'
+
 BAR_SIZE = 25*SCALE_QTILE
 BAR_SEP = 12*SCALE_QTILE
-ACCENT_COLOR=theme['orange']
-BAR_BG = '#1E2128'
+
+ACCENT_COLOR = theme['magenta']
+BAR_BG = theme['background']
 # }}}
 
 # Keybindings {{{
@@ -63,6 +66,16 @@ def change_spotify_volume(qtile, level):
     subprocess.run(["dunstify", "-a", 'spotifyvolume', '-u', 'low',
                     '-r', '9993', '-h', 'int:value:' + str(current_vol),
                     'Volume:' + f' {current_vol:.0f}%', '-t', '2000', '-i', 'spotify'])
+
+
+launch_rofi = 'rofi -show drun'
+launch_rofi_powermenu = 'rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu'
+
+if SCALE_QTILE > 1:
+    launch_rofi += ' -dpi 192'
+    launch_rofi_powermenu += ' -dpi 192'
+
+
 
 # }}}
 
@@ -109,7 +122,7 @@ keys = [
     Key([MOD, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([MOD, "mod1"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([MOD, "control"], "r", lazy.restart(), desc="Restart qtile"),
-    # Key([MOD, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([MOD, "mod1"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([MOD], "t", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
 
@@ -125,19 +138,16 @@ keys = [
 
     # window
 
-    Key([MOD], 'space', lazy.spawn('rofi -show drun')),
+    Key([MOD], 'space', lazy.spawn(launch_rofi)),
     Key([MOD], 'r', lazy.spawn(
         'alacritty -t "Ranger" -e ranger ' + home)),
     Key([MOD], 'w', lazy.spawn('brave --profile-directory="Default"')),
     Key([MOD, "shift"], 'w', lazy.spawn(
         'brave --profile-directory="Default" --incognito')),
-    # Key(["mod1"], 'w', lazy.spawnlazy(
-    #     'google-chrome-stable --profile-directory="Profile 1"')),
     Key([MOD], 'p', lazy.spawn(
         'brave --profile-directory="Profile 1"')),
     Key([MOD, "shift"], 's', lazy.spawn(home + '/.local/bin/screenshot')),
-    Key(["mod1"], 'F4', lazy.spawn(
-        'rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu')),
+    Key(["mod1"], 'F4', lazy.spawn(launch_rofi_powermenu)),
     Key([MOD], 's', lazy.window.toggle_floating()),
 
 
@@ -151,8 +161,8 @@ keys = [
     Key([MOD, "control"], "minus", change_spotify_volume("down")),
 
     # Brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("light -A 1")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("light -U 1")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("light -A 5")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("light -U 5")),
 ]
 # }}}
 
@@ -201,10 +211,10 @@ for i in groups:
 
 # Layouts {{{
 layout_defaults = {
-    "border_focus": ACCENT_COLOR,
+    "border_focus": theme["white"],
     "border_normal": theme["background"],
     "border_width": 2,
-    "margin": 8,
+    "margin": 4,
 }
 
 layouts = [
@@ -214,9 +224,7 @@ layouts = [
                ),
     layout.MonadTall(**layout_defaults),
     layout.MonadWide(**layout_defaults,),
-    layout.Tile(
-        border_width=0,
-        margin=4,),
+    layout.Tile(**layout_defaults,),
 ]
 
 
@@ -244,10 +252,9 @@ floating_layout = layout.Floating(
 
 widget_defaults = dict(
     font=DEFAULT_FONT,
-    # font='JetBrainsMonoExtraBold Nerd Font',
     fontsize=14*SCALE_QTILE,
     padding=3,
-    background=theme["background"],
+    background=BAR_BG,
     foreground=theme["foreground"],
 )
 
@@ -271,16 +278,13 @@ def spotify_action():
 # Widgets {{{
 def groupBox(bg):
     return [
-        # widget.Spacer(length=4, background=bg),
         CustomGroupBox(
-            # ﱣ 綠祿ﱣ
-            active=ACCENT_COLOR,
-            inactive=theme["blue"],
-            # highlight_color=[theme["crust"], theme["crust"]],
+            active=theme["black"],
+            inactive=theme["black"],
             this_current_screen_border=ACCENT_COLOR,
             this_screen_border=ACCENT_COLOR,
-            other_current_screen_border=theme["cyan"],
-            other_screen_border=theme["cyan"],
+            other_current_screen_border=theme["white"],
+            other_screen_border=theme["white"],
             highlight_method='text',
             font=ICON_FONT,
             padding_x=6*SCALE_QTILE,
@@ -289,7 +293,6 @@ def groupBox(bg):
             background=bg,
             disable_drag=True,
         ),
-        # widget.Spacer(length=BAR_SEP+16, background=bg),
     ]
 
 
@@ -376,6 +379,7 @@ def customWidgets(bg:str, fg:str, spotify:bool = True, gmail:bool = True,
     widgetlist = []
     if spotify:
         widgetlist.extend([
+            widget.Spacer(length=BAR_SEP, background=bg),
             SpotifyIcon(
                    font=ICON_FONT,
                    foreground=theme["green"],
@@ -398,8 +402,8 @@ def customWidgets(bg:str, fg:str, spotify:bool = True, gmail:bool = True,
                    mouse_callbacks={"Button1": lazy.spawn(
                        'playerctl play-pause -p spotify'), },
                    background=bg,
-                   # **decor2,
-                   ), widget.Spacer(length=BAR_SEP, background=bg)])
+                   ),
+            widget.Spacer(length=BAR_SEP, background=bg)])
 
     if pomodoro:
         widgetlist.extend([*pomodoro_wdiget(bg, fg),
@@ -414,7 +418,6 @@ def customWidgets(bg:str, fg:str, spotify:bool = True, gmail:bool = True,
     widgetlist.extend([
         widget.TextBox(
             text='',
-            # padding=6*SCALE_QTILE,
             foreground=theme["yellow"],
             background=bg,
             fontsize=ICON_FONT_SIZE,
@@ -427,7 +430,7 @@ def customWidgets(bg:str, fg:str, spotify:bool = True, gmail:bool = True,
                           display_map={'us': 'us', 'us intl': 'in'}
                           ),
         widget.Spacer(length=BAR_SEP, background=bg),
-        widget.TextBox(  # **decor,
+        widget.TextBox(
                 text='',
                 padding=6,
                 foreground=theme["red"],
@@ -464,21 +467,21 @@ def widgetBox(bg, fg):
         widget.Spacer(length=BAR_SEP, background=bg),
         widget.WidgetBox(widgets=[
             # widget.Spacer(length=BAR_SEP, background=bg),
-            widget.TextBox(  # **decor,
-                text='',
-                padding=6,
-                foreground=theme["green"],
-                background=bg,
-                fontsize=ICON_FONT_SIZE,
-                font=ICON_AWESOME_FONT,
-            ),
-            widget.Net(#**decor1,
-                   interface="enp4s0f3u1u1u3",
-                   # interface="enp4s0f3u1u4",
-                   format='{down} ↓↑ {up}',
-                   ),
-            widget.Spacer(length=BAR_SEP, background=bg),
-            widget.TextBox(  # **decor,
+            # widget.TextBox(  # **decor,
+            #     text='',
+            #     padding=6,
+            #     foreground=theme["green"],
+            #     background=bg,
+            #     fontsize=ICON_FONT_SIZE,
+            #     font=ICON_AWESOME_FONT,
+            # ),
+            # widget.Net(#**decor1,
+            #        interface="enp4s0f3u1u1u3",
+            #        # interface="enp4s0f3u1u4",
+            #        format='{down} ↓↑ {up}',
+            #        ),
+            # widget.Spacer(length=BAR_SEP, background=bg),
+            widget.TextBox(
                 text='',
                 padding=6,
                 foreground=theme["magenta"],
@@ -488,12 +491,11 @@ def widgetBox(bg, fg):
             ),
             widget.Memory(#**decor1,
                     format='{MemUsed:.2f}{mm}',
-                    # format='{MemPercent:04}%',
                     measure_mem='G',
                     background=bg,
                     ),
             widget.Spacer(length=BAR_SEP, background=bg),
-            widget.TextBox(  # **decor,
+            widget.TextBox(
                 text='',
                 padding=6,
                 foreground=theme["cyan"],
@@ -501,7 +503,7 @@ def widgetBox(bg, fg):
                 fontsize=ICON_FONT_SIZE,
                 font=ICON_AWESOME_FONT
             ),
-            widget.CPU(#**decor1,
+            widget.CPU(
                        format='{load_percent:04}%',
                         background=bg,
                        ),
@@ -510,13 +512,11 @@ def widgetBox(bg, fg):
             close_button_location='right',
             text_closed='  ',
             text_open=' ',
-            # foreground=theme["flamingo"],
             foreground=theme["black"],
             background=bg,
             fontsize=ICON_FONT_SIZE,
             font=ICON_FONT,
         ),
-        # widget.Spacer(length=BAR_SEP-4, background=bg),
     ]
 
 
@@ -530,7 +530,7 @@ def clockWidget(bg, fg):
             font=ICON_AWESOME_FONT,
             padding=8,
         ),
-        widget.Clock(  # **decor,
+        widget.Clock(
             # format="%a %d/%m %I:%M %p",
             format="%I:%M %p",
             foreground=fg,
@@ -546,8 +546,8 @@ def laptopWidgets(bg, fg):
         # widget.Backlight()
         widget.Systray(
             background=bg,
-            icon_size=15,
-            padding=10,
+            icon_size=16*SCALE_QTILE,
+            padding=10*SCALE_QTILE,
         ),
         widget.Spacer(length=BAR_SEP-(4*SCALE_QTILE), background=bg),
         WiFiIcon(
@@ -638,10 +638,9 @@ wmname = "LG3D"
 execCommands = [
     "feh --bg-fill /home/jeffer/.config/.wallpaper &",
     # "xrandr --output eDP-1 --mode 1440x900 &",
-    "picom --config ~/.config/picom/picom.conf &",
+    # "picom --config ~/.config/picom/picom.conf &",
+    "picom &",
     # "redshift -P -O 3500 &",
-    # home + "/.config/qtile/scripts/reload-polybar.sh",
-    # home + "/.config/qtile/scripts/set_alacritty_scale_factor.sh",
 ]
 
 # if (socket.gethostname() == "ArchSUS"):
