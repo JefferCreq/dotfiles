@@ -5,10 +5,17 @@ SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/jeffer/.zshrc'
+# zstyle :compinstall filename '/home/jeffer/.zshrc'
+#
+# autoload -Uz compinit
+# compinit
 
-autoload -Uz compinit
-compinit
+# Load Git completion
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+
+autoload -Uz compinit && compinit
+
 
 # End of lines added by compinstall
 # ZSH_THEME="archcraft"
@@ -57,6 +64,8 @@ plugins=(git)
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
 
 
 
