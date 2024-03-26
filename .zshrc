@@ -111,3 +111,7 @@ path+=$HOME/.local/bin/
 # eval "$(starship init zsh)"
 # source "$HOME/.zsh/spaceship/spaceship.zsh"
 
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

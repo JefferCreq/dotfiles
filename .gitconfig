@@ -1,6 +1,6 @@
 [user]
 	name = JefferCreq
-	email = jeffcreq@gmail.com
+	email = jefferson.castro@pucp.edu.pe
 [alias]
 	lg = log --oneline --decorate --all --graph
 	s = status -sb

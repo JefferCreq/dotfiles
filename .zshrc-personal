@@ -32,15 +32,14 @@ alias cqt='nvim /home/jeffer/.config/qtile/config.py'
 alias cqtw='nvim /home/jeffer/.config/qtile/settings/screens.py'
 alias cqtk='nvim /home/jeffer/.config/qtile/settings/keys.py'
 alias r=ranger
+alias code='code-insiders --enable-features=UseOzonePlatform --ozone-platform-hint=auto'
 
 
 # cd shortcut
 alias cdqt='cd $HOME/.config/qtile'
 alias cdvi='cd $HOME/.config/nvim/lua/custom/'
 alias cdlp='cd $HOME/EduVault/Courses/LP2/Workspace/'
-
-# For .dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cdwrk='cd $HOME/Workspace/'
 
 # For .dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -55,3 +54,7 @@ alias rm='rm -I'
 alias grep='grep --color=auto'
 alias wlan0_up='sudo ip link set wlan0 up'
 alias wlan0_down='sudo ip link set wlan0 down'
+
+
+# Wayland
+# alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland'
