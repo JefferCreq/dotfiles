@@ -48,8 +48,17 @@ rofi light lsd bat neofetch npm ranger zathura \
 zathura-pdf-mupdf ttf-font-awesome redshift python \
 python-pip obsidian tk xclip zip unzip dunst playerctl \
 upower zsh zsh-syntax-highlighting zsh-autosuggestions \
-nvidia-lts xf86-input-libinput
+nvidia-lts xf86-input-libinput wget
 ```
+
+### Hyprland WM pacakages
+```bash
+pacman -S bluez bluez-utils blueman bluedevil wlsunset \
+pipewire pipewire-alsa pipewire-pulse pipewire-jack \
+pavucontrol nemo qt5-wayland qt6-wayland obs-studio \
+xdg-desktop-portal-hyprland polkit-kde-agent
+```
+
 
 ### Installing AUR helper
 ```bash
