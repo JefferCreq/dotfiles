@@ -24,32 +24,45 @@ tooltip {
 
 #workspaces button {
     box-shadow: none;
-	text-shadow: none;
+    text-shadow: none;
     padding: 0px;
     border-radius: ${w_radius}px;
     margin-top: ${w_margin}px;
     margin-bottom: ${w_margin}px;
     padding-left: ${w_paddin}px;
     padding-right: ${w_paddin}px;
-    color: @wb-color;
+    color: @wb-inactive-color;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
+#workspaces button.empty {
+  color: @wb-inactive-color;
+}
+
+#workspaces button.visible {
+  color: @wb-color;
+}
+
 #workspaces button.active {
-    background: @wb-act-bg;
-    color: @wb-act-color;
-    margin-left: ${w_margin}px;
-    padding-left: ${w_padact}px;
-    padding-right: ${w_padact}px;
-    margin-right: ${w_margin}px;
+    /* background: @wb-act-bg; */
+    color: @wb-color;
+    /* margin-left: ${w_margin}px; */
+    /* padding-left: ${w_padact}px; */
+    /* padding-right: ${w_padact}px; */
+    /* margin-right: ${w_margin}px; */
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
+
+
+
 #workspaces button:hover {
-    background: @wb-hvr-bg;
-    color: @wb-hvr-color;
+    /* background: @wb-hvr-bg; */
+    /* color: @wb-hvr-color; */
+    background: @main-bg;
+    color: @wb-hvr-bg;
     padding-left: ${w_paddin}px;
     padding-right: ${w_paddin}px;
     animation: gradient_f 20s ease-in infinite;
@@ -101,12 +114,14 @@ tooltip {
 #bluetooth,
 #pulseaudio,
 #mpris,
-#custom-updates,
-#custom-wallchange,
+#custom-hyprleader,
+/* #custom-updates, */
+/* #custom-wallchange, */
 #custom-mode,
-#custom-cliphist,
+/* #custom-cliphist, */
 #custom-power,
-#custom-wbar,
+#language,
+/* #custom-wbar, */
 #custom-l_end,
 #custom-r_end,
 #custom-sl_end,
@@ -121,6 +136,22 @@ tooltip {
     padding-left: ${g_paddin}px;
     padding-right: ${g_paddin}px;
 }
+
+#custom-wallchange,
+#custom-updates,
+#custom-cliphist,
+#custom-wbar {
+    color: #87B0F9;
+    background: @main-bg;
+    opacity: 1;
+    margin: ${g_margin}px 0px ${g_margin}px 0px;
+    padding-left: ${g_paddin}px;
+    padding-right: ${g_paddin}px;
+}
+
+/* .hyprchild { */
+    /* text-shadow: #C3C6CB 0px 0 2.5px; */
+/* } */
 
 #workspaces,
 #taskbar {
@@ -161,4 +192,16 @@ tooltip {
     border-radius: ${c_radius}px 0px 0px ${c_radius}px;
     margin-left: ${e_margin}px;
     padding-left: ${e_paddin}px;
+}
+
+#battery.critical {
+  color: @wb-warning-color;
+}
+
+#battery {
+  color: @wb-good-color;
+}
+
+#battery.good {
+  color: @main-color;
 }

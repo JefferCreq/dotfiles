@@ -1,5 +1,5 @@
     "pulseaudio": {
-        "format": "{icon} {volume}",
+        "format": "{icon}",
         "format-muted": "󰝟",
         "on-click": "~/.config/hypr/scripts/newvolumecontrol.sh -o m",
         "on-click-middle": "~/.config/hypr/scripts/newvolumecontrol.sh -o m",
@@ -10,7 +10,7 @@
         "format-icons": {
             "headphone": "",
             "hands-free": "",
-            "headset": "",
+            "headset": "󰋎",
             "phone": "",
             "portable": "",
             "car": "",

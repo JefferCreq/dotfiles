@@ -24,32 +24,45 @@ tooltip {
 
 #workspaces button {
     box-shadow: none;
-	text-shadow: none;
+    text-shadow: none;
     padding: 0px;
     border-radius: 9px;
     margin-top: 3px;
     margin-bottom: 3px;
     padding-left: 3px;
     padding-right: 3px;
-    color: @wb-color;
+    color: @wb-inactive-color;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
+#workspaces button.empty {
+  color: @wb-inactive-color;
+}
+
+#workspaces button.visible {
+  color: @wb-color;
+}
+
 #workspaces button.active {
-    background: @wb-act-bg;
-    color: @wb-act-color;
-    margin-left: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-right: 3px;
+    /* background: @wb-act-bg; */
+    color: @wb-color;
+    /* margin-left: 3px; */
+    /* padding-left: 3px; */
+    /* padding-right: 3px; */
+    /* margin-right: 3px; */
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
+
+
+
 #workspaces button:hover {
-    background: @wb-hvr-bg;
-    color: @wb-hvr-color;
+    /* background: @wb-hvr-bg; */
+    /* color: @wb-hvr-color; */
+    background: @main-bg;
+    color: @wb-hvr-bg;
     padding-left: 3px;
     padding-right: 3px;
     animation: gradient_f 20s ease-in infinite;
@@ -74,8 +87,8 @@ tooltip {
     background: @wb-act-bg;
     color: @wb-act-color;
     margin-left: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 3px;
+    padding-right: 3px;
     margin-right: 3px;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
@@ -101,12 +114,14 @@ tooltip {
 #bluetooth,
 #pulseaudio,
 #mpris,
-#custom-updates,
-#custom-wallchange,
+#custom-hyprleader,
+/* #custom-updates, */
+/* #custom-wallchange, */
 #custom-mode,
-#custom-cliphist,
+/* #custom-cliphist, */
 #custom-power,
-#custom-wbar,
+#language,
+/* #custom-wbar, */
 #custom-l_end,
 #custom-r_end,
 #custom-sl_end,
@@ -118,9 +133,25 @@ tooltip {
     background: @main-bg;
     opacity: 1;
     margin: 4px 0px 4px 0px;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 7px;
+    padding-right: 7px;
 }
+
+#custom-wallchange,
+#custom-updates,
+#custom-cliphist,
+#custom-wbar {
+    color: #87B0F9;
+    background: @main-bg;
+    opacity: 1;
+    margin: 4px 0px 4px 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+/* .hyprchild { */
+    /* text-shadow: #C3C6CB 0px 0 2.5px; */
+/* } */
 
 #workspaces,
 #taskbar {
@@ -161,4 +192,16 @@ tooltip {
     border-radius: 7px 0px 0px 7px;
     margin-left: 9px;
     padding-left: 3px;
+}
+
+#battery.critical {
+  color: @wb-warning-color;
+}
+
+#battery {
+  color: @wb-good-color;
+}
+
+#battery.good {
+  color: @main-color;
 }

@@ -1,0 +1,53 @@
+    "custom/hyprleader": {
+      "format": "",
+      "tooltip": false
+    },
+    "custom/wallchange": {
+        "format": "󰆊{}",
+        "exec": "echo ; echo 󰆊 switch wallpaper",
+        "on-click": "~/.config/swww/swwwallpaper.sh -n ${mod_pos}",
+        "on-click-right": "~/.config/swww/swwwallpaper.sh -p ${mod_pos}",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+    "custom/wbar": {
+        "format": "{}", //    //
+        "exec": "echo ; echo  switch menubar",
+        "on-click": "~/.config/waybar/wbarconfgen.sh n",
+        "on-click-right": "~/.config/waybar/wbarconfgen.sh p",
+        "on-click-middle": "~/.config/waybar/wbarconfgen.sh",
+        "interval" : 86400,
+        "tooltip": true
+    },
+    "custom/cliphist": {
+        "format": "{}",
+        "exec": "echo ; echo 󰅇 clipboard history",
+        "on-click": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh c ${mod_pos}",
+        //"on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh d",
+        "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh w ${mod_pos}",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+    "custom/updates": {
+        "format": "󰮯",
+        "exec": "~/.config/hypr/scripts/systemupdate.sh",
+        "on-click": "~/.config/hypr/scripts/systemupdate.sh up",
+        "interval": 86400, // once every day
+        "tooltip": true
+    },
+    "group/grouphypr": {
+        "orientation": "inherit",
+        "drawer": {
+          "transition-duration": 500,
+          "children-class": "hyprchild",
+          "transition-left-to-right": false
+        },
+        "modules": [
+          "custom/hyprleader",
+          "custom/wallchange",
+          "custom/wbar",
+          "custom/cliphist",
+          "custom/updates"
+        ]
+    },
+

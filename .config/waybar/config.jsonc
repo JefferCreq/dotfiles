@@ -14,53 +14,135 @@
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/padd","custom/l_end","hyprland/workspaces","custom/r_end","custom/l_end","hyprland/window","custom/r_end","custom/padd"],
-	"modules-center": ["custom/padd","custom/l_end","clock","custom/r_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/l_end","network","bluetooth","pulseaudio","pulseaudio#microphone","custom/updates","battery","custom/r_end","custom/l_end","tray","custom/wallchange","custom/mode","custom/wbar","custom/cliphist","custom/power","custom/r_end","custom/padd"],
+	"modules-left": ["custom/padd","custom/l_end","hyprland/window","custom/r_end","custom/padd"],
+	"modules-center": ["custom/padd","custom/l_end","hyprland/workspaces","custom/r_end","custom/padd"],
+	"modules-right": ["custom/padd","custom/l_end","tray","custom/r_end","custom/l_end","hyprland/language","group/grouphypr","network","pulseaudio","pulseaudio#microphone","battery","clock","custom/r_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
 
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "active": "",
-            "default": ""
-        },
-        "sort-by-number": true
-    },
     "hyprland/window": {
-        "format": "  {}",
+        "format": "{}",
         "separate-outputs": true,
         "rewrite": {
             "jeffcreq@archsus:(.*)": "$1 ",
-            "(.*) — Mozilla Firefox": "$1 󰈹",
+            "(.*) — Mozilla Firefox": "󰈹 $1",
+            "(.*) - Brave": "󰖟 $1",
+            "(.*) - Microsoft​ Edge": "󰇩 $1",
             "(.*)Mozilla Firefox": "Firefox 󰈹",
             "(.*) - Visual Studio Code": "$1 󰨞",
             "(.*)Visual Studio Code": "Code 󰨞",
             "(.*) — Dolphin": "$1 󰉋",
             "(.*)Spotify": "Spotify 󰓇",
-            "(.*)Steam": "Steam 󰓓"
+            "(.*)Steam": "Steam 󰓓",
+            "vi (.*)": " $1",
+            "Zoom Meeting(.*)": "󰭹 Zoom Meeting$1",
+            "(.*) - Discord": "󰙯 $1",
+            "(.*) - Obsidian(.*)": "󰠮 $1"
         }
     },
 
-    "clock": {
-        "format": " {:%I:%M %p 󰃭 %a %d}",
-        "format-alt": "󰥔 {:%H:%M  %b %Y}",
-        "tooltip-format": "<tt><big>{calendar}</big></tt>"
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        // "format-icons": {
+        //     "1": "I",
+        //     "2": "II",
+        //     "3": "III",
+        //     "4": "IV",
+        //     "5": "V",
+        //     "6": "VI",
+        //     "7": "VII",
+        //     "8": "VIII",
+        //     "9": "IX",
+        //     "10": "",
+        //     "urgent": "",
+        //     // "active": "",
+        //     "default": ""
+        // },
+        "persistent-workspaces": {
+          "eDP-1": [1, 2, 3, 4, 5],
+          "HDMI-A-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        },
+        "format-icons": {
+          "urgent": "",
+          // "active": "",
+          "visible": "",
+          "active": "",
+          "default": "",
+          "empty": ""
+        },
+        "sort-by-number": true
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 5
+    },
+
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "us",
+        "format-en-intl": "es",
+        "keyboard-name": "at-translated-set-2-keyboard"
+    },
+
+    "custom/hyprleader": {
+      "format": "",
+      "tooltip": false
+    },
+    "custom/wallchange": {
+        "format": "󰆊{}",
+        "exec": "echo ; echo 󰆊 switch wallpaper",
+        "on-click": "~/.config/swww/swwwallpaper.sh -n 2",
+        "on-click-right": "~/.config/swww/swwwallpaper.sh -p 2",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+    "custom/wbar": {
+        "format": "{}", //    //
+        "exec": "echo ; echo  switch menubar",
+        "on-click": "~/.config/waybar/wbarconfgen.sh n",
+        "on-click-right": "~/.config/waybar/wbarconfgen.sh p",
+        "on-click-middle": "~/.config/waybar/wbarconfgen.sh",
+        "interval" : 86400,
+        "tooltip": true
+    },
+    "custom/cliphist": {
+        "format": "{}",
+        "exec": "echo ; echo 󰅇 clipboard history",
+        "on-click": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh c 2",
+        //"on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh d",
+        "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh w 2",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+    "custom/updates": {
+        "format": "󰮯",
+        "exec": "~/.config/hypr/scripts/systemupdate.sh",
+        "on-click": "~/.config/hypr/scripts/systemupdate.sh up",
+        "interval": 86400, // once every day
+        "tooltip": true
+    },
+    "group/grouphypr": {
+        "orientation": "inherit",
+        "drawer": {
+          "transition-duration": 500,
+          "children-class": "hyprchild",
+          "transition-left-to-right": false
+        },
+        "modules": [
+          "custom/hyprleader",
+          "custom/wallchange",
+          "custom/wbar",
+          "custom/cliphist",
+          "custom/updates"
+        ]
     },
 
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "󰤨 {essid}",
-        "format-ethernet": "󱘖 Wired",
+        "format-wifi": "󰤨",
+        "format-ethernet": "󰈀",
         "tooltip-format": "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
         "format-linked": "󱘖 {ifname} (No IP)",
         "format-disconnected": " Disconnected",
@@ -68,17 +150,8 @@
         "interval": 5
     },
 
-    "bluetooth": {
-        "format": " {status}",
-        "format-disabled": "", // an empty format will hide the module
-        "format-connected": " {num_connections}",
-        "tooltip-format": " {device_alias}",
-        "tooltip-format-connected": "{device_enumerate}",
-        "tooltip-format-enumerate-connected": " {device_alias}"
-    },
-
     "pulseaudio": {
-        "format": "{icon} {volume}",
+        "format": "{icon}",
         "format-muted": "󰝟",
         "on-click": "~/.config/hypr/scripts/newvolumecontrol.sh -o m",
         "on-click-middle": "~/.config/hypr/scripts/newvolumecontrol.sh -o m",
@@ -89,7 +162,7 @@
         "format-icons": {
             "headphone": "",
             "hands-free": "",
-            "headset": "",
+            "headset": "󰋎",
             "phone": "",
             "portable": "",
             "car": "",
@@ -109,77 +182,39 @@
         "scroll-step": 5
     },
 
-    "custom/updates": {
-        "format": "󰮯 {}",
-        "exec": "~/.config/hypr/scripts/systemupdate.sh",
-        "on-click": "~/.config/hypr/scripts/systemupdate.sh up",
-        "interval": 86400, // once every day
-        "tooltip": true
-    },
-
     "battery": {
         "states": {
-            "good": 95,
+            "good": 98,
             "warning": 30,
             "critical": 20
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
+        "format": "{icon}",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        // "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{capacity}% - {timeTo}"
     },
 
-    "tray": {
-        "icon-size": 18,
-        "spacing": 5
-    },
-
-    "custom/wallchange": {
-        "format": "󰆊{}",
-        "exec": "echo ; echo 󰆊 switch wallpaper",
-        "on-click": "~/.config/swww/swwwallpaper.sh -n 2",
-        "on-click-right": "~/.config/swww/swwwallpaper.sh -p 2",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-    "custom/mode": {
-        "format": "󰟡{}",
-        "exec": "echo ; echo 󰟡 switch mode",
-        "on-click": "~/.config/hypr/scripts/themeswitch.sh -n",
-        "on-click-right": "~/.config/hypr/scripts/themeswitch.sh -p",
-        "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/themeselect.sh",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-    "custom/wbar": {
-        "format": "{}", //    //
-        "exec": "echo ; echo  switch menubar",
-        "on-click": "~/.config/waybar/wbarconfgen.sh n",
-        "on-click-right": "~/.config/waybar/wbarconfgen.sh p",
-        "on-click-middle": "~/.config/waybar/wbarconfgen.sh",
-        "interval" : 86400,
-        "tooltip": true
-    },
-
-    "custom/cliphist": {
-        "format": "{}",
-        "exec": "echo ; echo 󰅇 clipboard history",
-        "on-click": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh c 2",
-        //"on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh d",
-        "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh w 2",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-    "custom/power": {
-        "format": "{}",
-        "exec": "echo ; echo  logout",
-        "on-click": "wlogout -b 2 -c 0 -r 0 -L 930 -R 930 -T 300 -B 300 --protocol layer-shell",
-        "interval" : 86400, // once every day
-        "tooltip": true
+    "clock": {
+        "format": " {:%I:%M %p}",
+        "format-alt": "󰥔 {:%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "on-click-right": "mode",
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+        }
     },
 
 

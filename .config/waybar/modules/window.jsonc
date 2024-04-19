@@ -1,15 +1,21 @@
     "hyprland/window": {
-        "format": "  {}",
+        "format": "{}",
         "separate-outputs": true,
         "rewrite": {
             "${USER}@${set_sysname}:(.*)": "$1 ",
-            "(.*) — Mozilla Firefox": "$1 󰈹",
+            "(.*) — Mozilla Firefox": "󰈹 $1",
+            "(.*) - Brave": "󰖟 $1",
+            "(.*) - Microsoft​ Edge": "󰇩 $1",
             "(.*)Mozilla Firefox": "Firefox 󰈹",
             "(.*) - Visual Studio Code": "$1 󰨞",
             "(.*)Visual Studio Code": "Code 󰨞",
             "(.*) — Dolphin": "$1 󰉋",
             "(.*)Spotify": "Spotify 󰓇",
-            "(.*)Steam": "Steam 󰓓"
+            "(.*)Steam": "Steam 󰓓",
+            "vi (.*)": " $1",
+            "Zoom Meeting(.*)": "󰭹 Zoom Meeting$1",
+            "(.*) - Discord": "󰙯 $1",
+            "(.*) - Obsidian(.*)": "󰠮 $1"
         }
     },
 
