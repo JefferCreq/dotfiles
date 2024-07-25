@@ -2,10 +2,10 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "󰤨",
         "format-ethernet": "󰈀",
-        "tooltip-format": "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
-        "format-linked": "󱘖 {ifname} (No IP)",
-        "format-disconnected": " Disconnected",
-        "format-alt": "󰤨 {signalStrength}%",
+        "tooltip-format": "󱘖   {ipaddr}     {bandwidthUpBytes}     {bandwidthDownBytes}",
+        "format-linked": "󱘖   {ifname} (No IP)",
+        "format-disconnected": "   Disconnected",
+        "format-alt": "󰤨   {signalStrength}%",
         "interval": 5
     },
 

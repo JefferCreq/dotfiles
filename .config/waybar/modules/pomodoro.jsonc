@@ -1,0 +1,10 @@
+    "custom/pomodoro": {
+        "format": "{}",
+        "exec": "~/.config/hypr/scripts/pomodoro.py",
+        "interval": 1,
+        "return-type": "json",
+        "on-click": "gnome-pomodoro",
+        "on-click-right": "gnome-pomodoro --pause-resume",
+        "on-click-middle": "gnome-pomodoro --skip",
+        "tooltip": "true"
+    },

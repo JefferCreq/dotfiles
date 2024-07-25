@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ncolor="-h string:bgcolor:#181825 -h string:fgcolor:#f5e0dc -h string:frcolor:#11111b"
+ncolor="-h string:bgcolor:#111418 -h string:fgcolor:#C3C6Cb -h string:frcolor:#0C0F11"
 
 function send_notification {
   brightness=`brightnessctl info | grep -oP "(?<=\()\d+(?=%)" | cat`

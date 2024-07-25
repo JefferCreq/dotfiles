@@ -3,10 +3,30 @@
 ## During Installation
 
 ```bash
-pacman -S dhcpcd lightdm lightdm-gtk-greeter bash-completion
+pacman -S --needed dhcpcd sddm bash-completion base-devel git
 ```
 
-Internet connection:
+### Installing AUR helper
+```bash
+cd /opt
+git clone https://aur.archlinux.org/yay.git
+sudo chown -R <username>:<username> ./yay
+cd yay
+makepkg -si
+```
+
+
+### Initial AUR pacakages
+```bash
+yay -S hyprland-git brave-bin
+```
+
+### Enable Sddm
+```bash
+systemctl enable sddm.service
+```
+
+### Internet connection:
 - List network interfaces with `ip link`.
 - With `systemctl list-units | grep dhcp` we can see if DHCP client is already runnig.
 - Start the client by `systemctl start dhcpcd@*interface*`.
@@ -41,55 +61,24 @@ sudo systemctl enable iwd
 sudo systemctl enable systemd-resolved.service
 ```
 
-### Additional pacakages
+
+## Additional pacakages
 ```bash
 pacman -S pacman-contrib alacritty feh ueberzug \
-rofi light lsd bat neofetch npm ranger zathura \
-zathura-pdf-mupdf ttf-font-awesome redshift python \
-python-pip obsidian tk xclip zip unzip dunst playerctl \
+wofi lsd bat npm ranger zathura zathura-pdf-mupdf \
+python python-pip obsidian tk xclip zip unzip dunst playerctl \
 upower zsh zsh-syntax-highlighting zsh-autosuggestions \
-nvidia-lts xf86-input-libinput wget
-```
-
-### Hyprland WM pacakages
-```bash
-pacman -S bluez bluez-utils blueman bluedevil wlsunset \
+wget bluez bluez-utils blueman bluedevil wlsunset \
 pipewire pipewire-alsa pipewire-pulse pipewire-jack \
 pavucontrol nemo qt5-wayland qt6-wayland obs-studio \
 xdg-desktop-portal-hyprland polkit-kde-agent
 ```
 
-
-### Installing AUR helper
+Additional AUR pacakages
 ```bash
-pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-```
-
-General pacakages
-```bash
-yay -S brave-bin nerd-fonts-jetbrains-mono \
-ttf-material-design-icons spotify picom-git
+yay -S ttf-cascadia-code-nerd ttf-montserrat spotify
 ```
 
-Lightdm:
-```bash
-systemctl enable lightdm
-```
-### Preparing the Configuration File for bspwm and sxhkd
-```bash
-mkdir -p ~/.config/bspwm
-mkdir -p ~/.config/sxhkd
-cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm
-cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd
-```
-
-We have to change the terminal emulator in `~/.config/sxhkd`
-```
-# terminal emulator
-super + Return
-    alacritty
-```
-Then we reboot.
 
 ### Installing Dotfiles
 

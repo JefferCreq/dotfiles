@@ -1,7 +1,8 @@
 * {
     border: none;
     border-radius: 0px;
-    font-family: "CaskaydiaCove Nerd Font Propo";
+    font-family: "Montserrat Alternates";
+    /* font-family: "CaskaydiaCove Nerd Font Propo"; */
     /* font-weight: bold; */
     font-size: 12px;
     min-height: 10px;
@@ -41,7 +42,7 @@ tooltip {
 }
 
 #workspaces button.visible {
-  color: @wb-color;
+  color: @wb-inactive-color;
 }
 
 #workspaces button.active {
@@ -120,6 +121,7 @@ tooltip {
 #custom-mode,
 /* #custom-cliphist, */
 #custom-power,
+#custom-pomodoro,
 #language,
 /* #custom-wbar, */
 #custom-l_end,
@@ -128,20 +130,12 @@ tooltip {
 #custom-sr_end,
 #custom-rl_end,
 #custom-rr_end,
-#tray {
-    color: @main-color;
-    background: @main-bg;
-    opacity: 1;
-    margin: 4px 0px 4px 0px;
-    padding-left: 7px;
-    padding-right: 7px;
-}
-
 #custom-wallchange,
 #custom-updates,
 #custom-cliphist,
-#custom-wbar {
-    color: #87B0F9;
+#custom-wbar,
+#tray {
+    color: @main-color;
     background: @main-bg;
     opacity: 1;
     margin: 4px 0px 4px 0px;
@@ -198,10 +192,10 @@ tooltip {
   color: @wb-warning-color;
 }
 
-#battery {
-  color: @wb-good-color;
-}
+/* #battery { */
+/*   color: @wb-good-color; */
+/* } */
 
-#battery.good {
-  color: @main-color;
-}
+/* #battery.good { */
+/*   color: @main-color; */
+/* } */

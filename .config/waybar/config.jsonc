@@ -16,7 +16,7 @@
 
 	"modules-left": ["custom/padd","custom/l_end","hyprland/window","custom/r_end","custom/padd"],
 	"modules-center": ["custom/padd","custom/l_end","hyprland/workspaces","custom/r_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/l_end","tray","custom/r_end","custom/l_end","hyprland/language","group/grouphypr","network","pulseaudio","pulseaudio#microphone","battery","clock","custom/r_end","custom/padd"],
+	"modules-right": ["custom/padd","custom/l_end","tray","custom/r_end","custom/l_end","group/grouphypr","custom/pomodoro","hyprland/language","network","pulseaudio","pulseaudio#microphone","battery","clock","custom/r_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
@@ -25,49 +25,33 @@
         "format": "{}",
         "separate-outputs": true,
         "rewrite": {
-            "jeffcreq@archsus:(.*)": "$1 ",
-            "(.*) — Mozilla Firefox": "󰈹 $1",
-            "(.*) - Brave": "󰖟 $1",
-            "(.*) - Microsoft​ Edge": "󰇩 $1",
-            "(.*)Mozilla Firefox": "Firefox 󰈹",
-            "(.*) - Visual Studio Code": "$1 󰨞",
-            "(.*)Visual Studio Code": "Code 󰨞",
-            "(.*) — Dolphin": "$1 󰉋",
-            "(.*)Spotify": "Spotify 󰓇",
-            "(.*)Steam": "Steam 󰓓",
-            "vi (.*)": " $1",
-            "Zoom Meeting(.*)": "󰭹 Zoom Meeting$1",
-            "(.*) - Discord": "󰙯 $1",
-            "(.*) - Obsidian(.*)": "󰠮 $1"
+            "jeffcreq@archsus:(.*)": "$1   ",
+            "(.*) — Mozilla Firefox": "󰈹   $1",
+            "(.*) - Brave": "󰖟   $1",
+            "(.*) - Microsoft​ Edge": "󰇩   $1",
+            "(.*)Mozilla Firefox": "Firefox   󰈹",
+            "(.*) - Visual Studio Code": "$1   󰨞",
+            "(.*)Visual Studio Code": "Code   󰨞",
+            "(.*) — Dolphin": "$1   󰉋",
+            "(.*)Spotify": "Spotify   󰓇",
+            "(.*)Steam": "Steam   󰓓",
+            "vi (.*)": "   $1",
+            "Zoom Meeting(.*)": "󰭹   Zoom Meeting$1",
+            "(.*) - Discord": "󰙯   $1",
+            "(.*) - Obsidian(.*)": "󰠮   $1"
         }
     },
 
     "hyprland/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
-        // "format-icons": {
-        //     "1": "I",
-        //     "2": "II",
-        //     "3": "III",
-        //     "4": "IV",
-        //     "5": "V",
-        //     "6": "VI",
-        //     "7": "VII",
-        //     "8": "VIII",
-        //     "9": "IX",
-        //     "10": "",
-        //     "urgent": "",
-        //     // "active": "",
-        //     "default": ""
-        // },
         "persistent-workspaces": {
           "eDP-1": [1, 2, 3, 4, 5],
           "HDMI-A-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         },
         "format-icons": {
           "urgent": "",
-          // "active": "",
-          "visible": "",
+          "visible": "",
           "active": "",
           "default": "",
           "empty": ""
@@ -77,13 +61,6 @@
     "tray": {
         "icon-size": 18,
         "spacing": 5
-    },
-
-    "hyprland/language": {
-        "format": "{}",
-        "format-en": "us",
-        "format-en-intl": "es",
-        "keyboard-name": "at-translated-set-2-keyboard"
     },
 
     "custom/hyprleader": {
@@ -139,14 +116,31 @@
         ]
     },
 
+    "custom/pomodoro": {
+        "format": "{}",
+        "exec": "~/.config/hypr/scripts/pomodoro.py",
+        "interval": 1,
+        "return-type": "json",
+        "on-click": "gnome-pomodoro",
+        "on-click-right": "gnome-pomodoro --pause-resume",
+        "on-click-middle": "gnome-pomodoro --skip",
+        "tooltip": "true"
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "us",
+        "format-en-intl": "es",
+        "keyboard-name": "at-translated-set-2-keyboard"
+    },
+
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "󰤨",
         "format-ethernet": "󰈀",
-        "tooltip-format": "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
-        "format-linked": "󱘖 {ifname} (No IP)",
-        "format-disconnected": " Disconnected",
-        "format-alt": "󰤨 {signalStrength}%",
+        "tooltip-format": "󱘖   {ipaddr}     {bandwidthUpBytes}     {bandwidthDownBytes}",
+        "format-linked": "󱘖   {ifname} (No IP)",
+        "format-disconnected": "   Disconnected",
+        "format-alt": "󰤨   {signalStrength}%",
         "interval": 5
     },
 
@@ -157,7 +151,7 @@
         "on-click-middle": "~/.config/hypr/scripts/newvolumecontrol.sh -o m",
         "on-scroll-up": "~/.config/hypr/scripts/newvolumecontrol.sh -o i",
         "on-scroll-down": "~/.config/hypr/scripts/newvolumecontrol.sh -o d",
-        "tooltip-format": "{icon} {desc} // {volume}%",
+        "tooltip-format": "{icon}    {desc} // {volume}%",
         "scroll-step": 5,
         "format-icons": {
             "headphone": "",
@@ -178,7 +172,7 @@
         "on-click-middle": "~/.config/hypr/scripts/volumecontrol.sh -i m",
         "on-scroll-up": "~/.config/hypr/scripts/volumecontrol.sh -i i",
         "on-scroll-down": "~/.config/hypr/scripts/volumecontrol.sh -i d",
-        "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
+        "tooltip-format": "{format_source}   {source_desc} // {source_volume}%",
         "scroll-step": 5
     },
 
@@ -189,8 +183,8 @@
             "critical": 20
         },
         "format": "{icon}",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
         "format-alt": "{time} {icon}",
         // "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "format-icons": ["", "", "", "", ""],
@@ -198,8 +192,8 @@
     },
 
     "clock": {
-        "format": " {:%I:%M %p}",
-        "format-alt": "󰥔 {:%H:%M}",
+        "format": "    {:%I:%M %p}",
+        "format-alt": "󰥔  {:%H:%M}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
                     "mode"          : "year",

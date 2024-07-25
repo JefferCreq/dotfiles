@@ -313,27 +313,27 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#181825"
-    foreground = "#f5e0dc"
-    frame_color = "#f5c2e7"
+    background = "#0C0F11"
+    foreground = "#C3C6CB"
+    frame_color = "#D46EC0"
     icon = "~/.config/dunst/icons/low.svg"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#313244"
-    foreground = "#f5e0dc"
-    frame_color = "#b4befe"
+    background = "#0C0F11"
+    foreground = "#C3C6CB"
+    frame_color = "#87B0F9"
     icon = "~/.config/dunst/icons/pokeball.svg"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "#f5e0dc"
-    foreground = "#1e1e2e"
-    frame_color = "#f38ba8"
+    background = "#C3C6CB"
+    foreground = "#0C0F11"
+    frame_color = "#E35535"
     icon = "~/.config/dunst/icons/critical.svg"
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable

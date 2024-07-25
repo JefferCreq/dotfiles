@@ -55,7 +55,7 @@ fi
 # set device action
 
 vol=$(pactl get-$target-volume @DEFAULT_${target^^}@ | grep 'Volume:' | grep -E -o "[0-9]+%" | head -1 | tr -d '%')
-ncolor="-h string:bgcolor:#181825 -h string:fgcolor:#f5e0dc -h string:frcolor:#11111b"
+ncolor="-h string:bgcolor:#0C0F11 -h string:fgcolor:#C3C6Cb -h string:frcolor:#111418"
 step="${2:-5}"
 icodir="~/.config/dunst/icons/vol"
 

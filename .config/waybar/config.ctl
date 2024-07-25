@@ -5,4 +5,4 @@
 0|30|top|( hyprland/workspaces ) ( hyprland/window )|( clock )|( network bluetooth pulseaudio pulseaudio#microphone custom/updates battery ) ( tray custom/wallchange custom/mode custom/wbar custom/cliphist custom/power )
 0|30|bottom|( hyprland/workspaces ) ( hyprland/window )|( clock )|( network bluetooth pulseaudio pulseaudio#microphone custom/updates battery ) ( tray custom/wallchange custom/mode custom/wbar custom/cliphist custom/power )
 0|30|bottom|( hyprland/window )|( hyprland/workspaces )|( tray custom/wallchange custom/mode custom/wbar custom/cliphist custom/power ) ( network pulseaudio pulseaudio#microphone custom/updates battery ) ( clock )
-1|30|top|( hyprland/window )|( hyprland/workspaces )|( tray ) ( hyprland/language group/grouphypr network pulseaudio pulseaudio#microphone battery clock )
+1|30|top|( hyprland/window )|( hyprland/workspaces )|( tray ) ( group/grouphypr custom/pomodoro hyprland/language network pulseaudio pulseaudio#microphone battery clock )

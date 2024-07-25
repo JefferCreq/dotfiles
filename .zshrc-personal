@@ -32,7 +32,7 @@ alias cqt='nvim /home/jeffer/.config/qtile/config.py'
 alias cqtw='nvim /home/jeffer/.config/qtile/settings/screens.py'
 alias cqtk='nvim /home/jeffer/.config/qtile/settings/keys.py'
 alias r=ranger
-alias code='code-insiders --enable-features=UseOzonePlatform --ozone-platform-hint=auto'
+alias code='code-insiders --enable-features=UseOzonePlatform --ozone-platform-hint=auto 2>/dev/null'
 
 
 # cd shortcut
