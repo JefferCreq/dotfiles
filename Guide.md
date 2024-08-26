@@ -3,7 +3,15 @@
 ## During Installation
 
 ```bash
-pacman -S --needed dhcpcd sddm bash-completion base-devel git
+pacman -S --needed dhcpcd sddm bash-completion base-devel git waybar swww \
+rofi-wayland pacman -S pacman-contrib alacritty feh ueberzug \
+lsd bat npm ranger zathura zathura-pdf-mupdf \
+python python-pip obsidian tk xclip zip unzip dunst playerctl \
+upower zsh zsh-syntax-highlighting zsh-autosuggestions \
+wget bluez bluez-utils blueman wlsunset \
+pipewire pipewire-alsa pipewire-pulse pipewire-jack \
+pavucontrol nemo qt5-wayland qt6-wayland obs-studio \
+xdg-desktop-portal-hyprland polkit-kde-agent
 ```
 
 ### Installing AUR helper
@@ -18,7 +26,7 @@ makepkg -si
 
 ### Initial AUR pacakages
 ```bash
-yay -S hyprland-git brave-bin
+yay -S brave-bin ttf-cascadia-code-nerd ttf-montserrat spotify wlogout
 ```
 
 ### Enable Sddm
@@ -59,24 +67,6 @@ Try `ping google.com`, if everything work:
 ```bash
 sudo systemctl enable iwd
 sudo systemctl enable systemd-resolved.service
-```
-
-
-## Additional pacakages
-```bash
-pacman -S pacman-contrib alacritty feh ueberzug \
-wofi lsd bat npm ranger zathura zathura-pdf-mupdf \
-python python-pip obsidian tk xclip zip unzip dunst playerctl \
-upower zsh zsh-syntax-highlighting zsh-autosuggestions \
-wget bluez bluez-utils blueman bluedevil wlsunset \
-pipewire pipewire-alsa pipewire-pulse pipewire-jack \
-pavucontrol nemo qt5-wayland qt6-wayland obs-studio \
-xdg-desktop-portal-hyprland polkit-kde-agent
-```
-
-Additional AUR pacakages
-```bash
-yay -S ttf-cascadia-code-nerd ttf-montserrat spotify
 ```
 
 

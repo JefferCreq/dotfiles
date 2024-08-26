@@ -1,8 +1,8 @@
 /* @define-color bar-bg rgba(0, 0, 0, 0); */
-@define-color bar-bg #0C0F11;
+@define-color bar-bg rgba(12,15,17,0); /* #0C0F11 */
 
 @define-color main-color #C3C6CB;
-@define-color main-bg #0C0F11;
+@define-color main-bg rgba(12,15,17,0);
 
 @define-color tool-bg #111418;
 @define-color tool-color #C3C6CB;
@@ -19,6 +19,6 @@
 @define-color wb-warning-color #E35535;
 @define-color wb-good-color #00A884;
 
-@define-color wb-inactive-color #3F3F4F;
+@define-color wb-inactive-color #C3C6CB;
 @define-color wb-active-color #D46EC0;
 @define-color wb-alt-color #00A884;
