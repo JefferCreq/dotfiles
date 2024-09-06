@@ -11,10 +11,14 @@ fi
 killall -SIGUSR1 waybar
 
 if [ "$STATUS" = "hidden" ]; then
-    hyprctl keyword general:gaps_out 0,4,2,4
+    hyprctl keyword general:gaps_in 1
+    hyprctl keyword general:gaps_out 2
+    hyprctl keyword decoration:rounding 4
     echo "visible" > "$STATUS_FILE"
 else
-    hyprctl keyword general:gaps_out 8
+    hyprctl keyword general:gaps_in 0
+    hyprctl keyword general:gaps_out 0
+    hyprctl keyword decoration:rounding 0
     echo "hidden" > "$STATUS_FILE"
 fi
 

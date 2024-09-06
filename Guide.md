@@ -5,19 +5,21 @@
 ```bash
 pacman -S --needed dhcpcd sddm bash-completion base-devel git waybar swww \
 rofi-wayland pacman -S pacman-contrib alacritty feh ueberzug \
-lsd bat npm ranger zathura zathura-pdf-mupdf \
+lsd bat npm ranger zathura zathura-pdf-mupdf noto-fonts-emoji \
 python python-pip obsidian tk xclip zip unzip dunst playerctl \
 upower zsh zsh-syntax-highlighting zsh-autosuggestions \
-wget bluez bluez-utils blueman wlsunset \
+wget bluez bluez-utils blueman wlsunset cliphist \
 pipewire pipewire-alsa pipewire-pulse pipewire-jack \
 pavucontrol nemo qt5-wayland qt6-wayland obs-studio \
-xdg-desktop-portal-hyprland polkit-kde-agent
+xdg-desktop-portal-hyprland polkit-kde-agent \
+capitaine-cursors adw-gtk-theme \
+ttf-dejavu ttf-liberation adobe-source-han-sans-otc-fonts
 ```
 
 ### Installing AUR helper
 ```bash
 cd /opt
-git clone https://aur.archlinux.org/yay.git
+sudo git clone https://aur.archlinux.org/yay.git
 sudo chown -R <username>:<username> ./yay
 cd yay
 makepkg -si
@@ -26,7 +28,8 @@ makepkg -si
 
 ### Initial AUR pacakages
 ```bash
-yay -S brave-bin ttf-cascadia-code-nerd ttf-montserrat spotify wlogout
+yay -S brave-bin ttf-cascadia-code-nerd ttf-montserrat spotify wlogout \
+hyprpicker hyprshot gnome-pomodoro-git tela-circle-icon-theme-grey \
 ```
 
 ### Enable Sddm
@@ -97,4 +100,5 @@ Section "InputClass"
     Option "NaturalScrolling" "true"
 EndSection
 ```
+
 

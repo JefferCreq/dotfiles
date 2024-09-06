@@ -1,5 +1,5 @@
 /* @define-color bar-bg rgba(0, 0, 0, 0); */
-@define-color bar-bg rgba(12,15,17,0); /* #0C0F11 */
+@define-color bar-bg #0C0F11;
 
 @define-color main-color #C3C6CB;
 @define-color main-bg rgba(12,15,17,0);
