@@ -8,7 +8,8 @@ else
     STATUS="hidden"
 fi
 
-killall -SIGUSR1 waybar
+# killall -SIGUSR1 waybar
+# killall -SIGUSR1 ags quit || ags run
 
 if [ "$STATUS" = "hidden" ]; then
     hyprctl keyword general:gaps_in 1
@@ -22,4 +23,6 @@ else
     echo "hidden" > "$STATUS_FILE"
 fi
 
+
+ags run || ags quit
 

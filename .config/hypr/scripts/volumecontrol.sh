@@ -66,10 +66,12 @@ i)
   else
     pactl set-$target-volume  @DEFAULT_${target^^}@ 100%
   fi
-  notify_vol
+  # notify_vol
   ;;
-d) pactl set-$target-volume  @DEFAULT_${target^^}@ -${step}%; notify_vol ;;
-m) pactl set-$target-mute @DEFAULT_${target^^}@ toggle; notify_mute ;;
+# d) pactl set-$target-volume  @DEFAULT_${target^^}@ -${step}%; notify_vol ;;
+d) pactl set-$target-volume  @DEFAULT_${target^^}@ -${step}% ;;
+# m) pactl set-$target-mute @DEFAULT_${target^^}@ toggle; notify_mute ;;
+m) pactl set-$target-mute @DEFAULT_${target^^}@ toggle ;;
     *) print_error ;;
 esac
 

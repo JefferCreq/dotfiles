@@ -1,0 +1,47 @@
+.bar-right {
+  .theme {
+    label {
+      font-size: larger;
+    }
+  }
+
+  .system-tray {
+    button {
+      border-radius: 0px;
+      padding: 0px 0px;
+    }
+    button:first-child {
+      border-radius: 10px 0px 0px 10px;
+      padding: 0px 0px 0px 5px;
+    }
+
+    button:last-child {
+      border-radius: 0px 10px 10px 0px;
+      padding: 0px 5px 0px 0px;
+    }
+
+    button:only-child {
+      border-radius: 10px;
+    }
+  }
+
+
+  .media {
+    @extend .module;
+    background-size: cover;
+    background-position: center;
+    margin: 0px;
+    padding: 0px 10px;
+
+    .progress {
+      min-width: 15px; /* its size is min(min-height, min-width) */
+      min-height: 1px;
+      font-size: 1px; /* to set its thickness set font-size on it */
+      margin: 0px; /* you can set margin on it */
+      padding: 0px;
+      label {
+        font-size: 15px;
+      }
+    }
+  }
+}

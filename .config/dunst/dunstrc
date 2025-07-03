@@ -92,7 +92,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 3
+    frame_width = 1
 
     # Defines color of the frame around the notification window.
     #frame_color = "#eba0ac"
@@ -315,7 +315,7 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#0C0F11"
     foreground = "#C3C6CB"
-    frame_color = "#D46EC0"
+    frame_color = "#000"
     icon = "~/.config/dunst/icons/low.svg"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
