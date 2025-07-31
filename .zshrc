@@ -117,3 +117,12 @@ path+=$HOME/.local/bin/
 source <(ng completion script)
 
 PATH=~/.console-ninja/.bin:$PATH
+# bun completions
+[ -s "/home/jeffcreq/.bun/_bun" ] && source "/home/jeffcreq/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/home/jeffcreq/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/jeffcreq/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+

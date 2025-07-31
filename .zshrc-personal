@@ -58,3 +58,8 @@ alias wlan0_down='sudo ip link set wlan0 down'
 
 # Wayland
 # alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland'
+#
+
+
+# Time
+alias timesync='sudo systemctl restart systemd-timesyncd'
