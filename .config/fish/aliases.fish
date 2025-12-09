@@ -31,4 +31,3 @@ alias wlan0_down 'sudo ip link set wlan0 down'
 
 # sincronizar hora
 alias timesync 'sudo systemctl restart systemd-timesyncd'
-
